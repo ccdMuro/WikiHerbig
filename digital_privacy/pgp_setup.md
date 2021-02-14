@@ -1,8 +1,8 @@
 ---
 title: PGP Setup
-description: A guide to how to generate a keys, create a secure backup and use it with a YubiKey.
+description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-14T19:59:01.454Z
+date: 2021-02-14T20:01:17.269Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
