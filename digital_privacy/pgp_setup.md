@@ -2,9 +2,9 @@
 title: PGP Setup
 description: A guide to how to generate a keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-13T21:12:21.466Z
-tags: 
-editor: undefined
+date: 2021-02-14T19:59:01.454Z
+tags: gpg, pgp, yubikey
+editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
 ---
 
@@ -12,9 +12,9 @@ dateCreated: 2021-01-03T17:35:46.129Z
 
 The goal is to store the keys onto the YubiKey for daily use.
 
-It is possible to create the keys directly on the YubiKey but than we won't be able to hold a backup. In case your YubiKey gets damaged or lost, this will result in potential data loss and the hassle of updating all your services and devices to use the new key.
+It is possible to create the keys directly on the YubiKey but then we won't be able to hold a backup. In case your YubiKey gets damaged or lost, this will result in potential data loss and the hassle of updating all your services and devices to use the new key.
 
-I'll show you how to setup the keys on a PC, create backups and than move them to the YubiKey.
+I'll show you how to setup the keys on a PC, create backups and then move them to the YubiKey.
 
 ```plantuml
 @startuml
@@ -67,7 +67,7 @@ What we are looking for is a combination of 4 Keys.
     - **Sub** Encryption
     - **Sub** Authentication
 
-The user identification will be assosiated with the main key. Your `uid` contains the full name the assosiated email aswell as an optional comment. A listing of a key as printed by gpg may look like this:
+The user identification will be assosiated with the main key. Your `uid` contains the full name the assosiated email as well as an optional comment. A listing of a key as printed by gpg may look like this:
 
 ```
 pub   rsa4096/ABCDEF1234567890 2021-01-01 [C] [expires: 2022-01-01]
@@ -101,7 +101,7 @@ Please select what kind of key you want
 Your selection? 8
 ```
 
-The next part is a bit tricky. Now you can **toggle** the capabilities for the *main* key. Technically you could create *one key to do them all*. But I consider this a bad idea. Let's go for one purpose keys.
+The next part is a bit tricky. Now you can **toggle** the capabilities for the *main* key. Technically you could create *one key to do them all*. But I consider this a bad idea. Let's go for single-purpose-keys.
 
 The only capability you can not toggle at this stage is `Certify`. Disable all other by **toggling** one at a time. Confirm each *toggle* in between. You should be typing a key combination like: `S`, `Return`, `E`, `Return`. Check the `Current allowed actions` to only contain `Certify` before finishing this stage with  `Q` and `Return`.
 
@@ -150,7 +150,7 @@ Key expires at Mi 05 Jan 2022 01:03:06 CET
 Is this correct? (y/N) y
 ```
 
-We are almost there. Now type in your identity, giving your real name and the email address you want to be associated with you. A comment is optional and can be left empty. You can add further email addresses to your key later.
+We are almost there. Now type in your identity, giving your real name and the email address you want to be associated with. A comment is optional and can be left empty. You can add further email addresses to your key later.
 
 ```
 GnuPG needs to construct a user ID to identify your key.
@@ -170,7 +170,7 @@ Just make sure you have enough entropy during the key generation. Check your ava
 
 Once the key generation is done you will see the listing of your key including its fingerprint. In this example `C153F8B2CC34081E9091C71B195E33D069143FE5`, you will need this in the following steps.
 
-Also you get a hint where the revocation certificate has been stored. Move is to a save place, like an encrypted USB drive that is kept offline. Anyone can use this revocation certificate to invalidate your key. So don't let it slip into fiendish hands. 
+Also you get a hint where the revocation certificate has been stored. Move it to a save place, like an encrypted USB drive that is kept offline. Anyone can use this revocation certificate to invalidate your key. So don't let it slip into fiendish hands. 
 
 ```
 gpg: key 195E33D069143FE5 marked as ultimately trusted
@@ -191,7 +191,7 @@ There are three kind of keys we need to create. One for signing, one for encrypt
 $ gpg --edit-key --expert C153F8B2CC34081E9091C71B195E33D069143FE5
 ```
 
-Adding another key is as simple as `addkey`. The following procedurese should look familiar to you as its the same as for the primary key. Go for the `RSA` key with custom capabilities.
+Adding another key is as simple as `addkey`. The following procedurese should look familiar to you as it's the same as for the primary key. Go for the `RSA` key with custom capabilities.
 
 ```
 gpg> addkey
@@ -242,19 +242,19 @@ ssb  rsa4096/8E15AB3040140A61
      created: 2021-01-16  expires: 2022-01-16  usage: A   
 ```
 
-Now repeat the `addkey` procedure but thistime **toggle** the capabilitiy to `Sign`.
+Now repeat the `addkey` procedure but this time **toggle** the capabilitiy to `Sign`.
 
 ```
 Current allowed actions: Sign
 ```
 
-Now repeat the `addkey` procedure but thistime **toggle** the capabilitiy to `Encrypt`.
+Now repeat the `addkey` procedure but this time **toggle** the capabilitiy to `Encrypt`.
 
 ```
 Current allowed actions: Encrypt
 ```
 
-Finaly don't forget to `save` your changes and checkout your PGP key. You should end up with a `[C]ertify`, an `[A]uthenticate`, a `[S]ign` and an `[E]ncrypt` Key.
+Finally don't forget to `save` your changes and check out your PGP key. You should end up with a `[C]ertify`, an `[A]uthenticate`, a `[S]ign` and an `[E]ncrypt` Key.
 
 ```
 gpg> save
@@ -296,7 +296,7 @@ Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
 
 ```
 
-Until now your real name should not have changed, but maybe you have several email accounts. The listing shows that your second email has been added, but is trust status is `[unknown]`. As it is your own email address the chances are good that you trust yourself to have entered the right credentials. Don't worry this will change to ultimate ones you save your changes.
+Until now your real name should not have changed, but maybe you have several email accounts. The listing shows that your second email has been added, but its trust status is `[unknown]`. As it is your own email address, chances are good that you trust yourself to have entered the right credentials. Don't worry this will change to ultimate once you save your changes.
 
 ```
 sec  rsa4096/195E33D069143FE5
@@ -311,9 +311,9 @@ Repeat this for all your emails you want to be assosiated with this key.
 
 ## Change Primary Email
 
-Did you notice the `.` (dot) after the `(2).`? It marks your `primary` email. If you fine with this selection  you can skip this step, otherwise stay with me and I show you how to change the primary email.
-
-Select the email you want to change to be your primary email by selecting it with the number in the braces before the email. In this example I want `your.name@company.email` to be the primary email address. So I **toggle** the selection for `1`.
+Did you notice the `.` (dot) after the `(2).`? It marks your `primary` email. If you are fine with this selection  you can skip this step, otherwise stay with me and I show you how to change the primary email.
+ 
+Select the email you want to be your primary email with the number in the braces before it. In this example I want `your.name@company.email` to be the primary email address. So I **toggle** the selection for `1`.
 
 ```
 gpg> uid 1
@@ -360,18 +360,18 @@ uid           [ultimate] Your Name <you.other@email.address>
 
 The backup will serve multiple purposes. 
 
-If your yubikey gets broken, to create a replacement. This is wyh we create the key on the PC before moving it to the youbikey. It is posible to create the key direktly on the yubikey itself, but it is not possible to get hold of a private key once it hits the write only memory of the yubikey. In case of a hardware failure you loose all access for good. But with the private key backup you can just buy a new yubikey and restore it.
+To create a replacement if your yubikey gets broken. This is why we create the key on the PC before moving it to the yubikey. It is possible to create the key directly on the yubikey itself, but it is not possible to get hold of a private key once it hits the "write only memory" of the yubikey. In case of a hardware failure you loose all access for good. But with the private key backup you can just buy a new yubikey and restore it.
 
-Eaven if you do not intend to use a yubikey. If any other instance of the key gets lost, RIP data.
+Even if you do not intend to use a yubikey. If any other instance of the key gets lost, RIP data.
 
 Finally, to extend the expiration date of your keys. During your everyday life you will have only the authentication, signing and encryption keys at hand. The certification key will remain in a save place aka your backup.
 
 
 ## Export Secret Key
 
-This is a very sensitive procedure. You will now extract your private keys to a file. Depending on your concerns, you may want to disconnect your maschine from the network, extablisch a `tmpfs`, question your purpose in live and prepare an encrypted thumb drive.
+This is a very sensitive procedure. You will now extract your private keys to a file. Depending on your concerns, you may want to disconnect your machine from the network, establish a `tmpfs`, question your purpose in life and prepare an encrypted thumb drive.
 
-The key it self is a binary data blob. For the ease of use we will wrap it into a ASCII armour and redirect it into a file. You can choose any name  you want for the file, but I recoment something meaningful like `yourname.gpg.sec`.
+The key itself is a binary data blob. For the ease of use we will wrap it into a ASCII armour and redirect it into a file. You can choose any name you want for the file, but I recommend something meaningful like `yourname.gpg.sec`.
 
 This will export the hole key.
 
@@ -379,7 +379,7 @@ This will export the hole key.
 $ gpg --export-secret-keys --armour C153F8B2CC34081E9091C71B195E33D069143FE5 > yourname.gpg.sec
 ```
 
-Also, export only the sub keys, as this is what you will end up using on your daly basis.
+Also, export only the sub keys, as this is what you will end up using on your daily basis.
 
 ```
 $ gpg --export-secret-subkeys --armour C153F8B2CC34081E9091C71B195E33D069143FE5 > yourname.gpg.subsec
@@ -393,8 +393,8 @@ Choose one or all of the following options to store your secret key.
 
 ### Encrypted Thumb Drive
 
-**PRO:** IMHO the most secure way of those tree is the encrypted thumb drive. It is offline, disconnected from your machine as long as not needed, encrypted and secured by a passphrase, hidden in your deepest cellar. 
-**CON:** The one drawback is that it's a smal item, so it prone to get lost. The other drawback is that as a electrical storage sollution is vulnerable to fire, water, electrostatic discharge and material fatigue. Check on it every now and than, an consider replacing the hardware periodically.
+**PRO:** IMHO the most secure way of those three is the encrypted thumb drive. It is offline, disconnected from your machine as long as not needed, encrypted and secured by a passphrase, hidden in your deepest cellar. 
+**CON:** The one drawback is that it's a small item, so it's prone to get lost. The other drawback is that as a electrical storage solution is vulnerable to fire, water, electrostatic discharge and material fatigue. Check on it every now and then, and consider replacing the hardware periodically.
 
 - [Encrypted Thumb Drive *Setup an encrypted thumb drive, and secure it with a passphrase.*](/digital_privacy/excrypted_thumbdrive)
 {.links-list}
@@ -402,8 +402,8 @@ Choose one or all of the following options to store your secret key.
 
 ### Encrypted Archive
 
-**PRO:** Choose this method if you want to store your backup on a network connected machine or even in a NAS or cloud storage. Probably you will end up with multiple copys of your backup due to storage redundancy or synced storage location. This is a good choice if you're concerend in loosing the backup.
-**CON:** Your key backup is *online* by one means or another. Thus, it is potentially accessable by others. A particularly secure and long passphrase is a must. I'm not saying someone will breach your security efforty anyway, but it is still a theoretical possibility.
+**PRO:** Choose this method if you want to store your backup on a network connected machine or even in a NAS or cloud storage. Probably you will end up with multiple copies of your backup due to storage redundancy or synced storage location. This is a good choice if you're concerend in loosing the backup.
+**CON:** Your key backup is *online* by one means or another. Thus, it is potentially accessable by others. A particularly secure and long passphrase is a must. I'm not saying someone will breach your security efforts anyway, but it is still a theoretical possibility.
 
 - [Encrypt File with GPG *Encrypt a file with GPG, and secure it with a passphrase.*](/digital_privacy/encrypt_file_with_gpg)
 {.links-list}
@@ -449,7 +449,7 @@ ssb  rsa4096/1B4B84BB9AF3677E
 
 With the `key #` command you can **toggle/select** the key you want to move with `keytocard`. An asterisk (`*`) will mark your selection.
 
-Lets start with moving the `[A]uthentication` key. When prompted where to store the key, select the *Authentication key* slot (`3`).
+Let's start with moving the `[A]uthentication` key. When prompted where to store the key, select the *Authentication key* slot (`3`).
 
 ```
 gpg> key 1
@@ -463,7 +463,7 @@ Please select where to store the key:
 Your selection? 3
 ```
 
-Good, not switch to the `[S]ignature` key. Remember to **toggle** the selection for `key 1` to deselect it. When prompted where to store the key, select the *Signature key* slot (`1`).
+Good, now switch to the `[S]ignature` key. Remember to **toggle** the selection for `key 1` to deselect it. When prompted where to store the key, select the *Signature key* slot (`1`).
 
 ```
 gpg> key 2
@@ -563,7 +563,7 @@ Here is the list of hard- and software I used for my setup.
 
 
 ## YubiKey and Snap (Thunderbird)
-I started out using Thunderbird from the snap repsotitory. I got in to trubble forwarding access to the YubiKey through the snap environment.
+I started out using Thunderbird from the snap repository. I got in to trouble forwarding access to the YubiKey through the snap environment.
 
 > This Problem is still unresolved.
 {.is-warning}
