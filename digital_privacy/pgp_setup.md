@@ -2,7 +2,7 @@
 title: PGP Setup
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-14T20:01:17.269Z
+date: 2021-02-15T19:56:06.522Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -264,7 +264,6 @@ $ gpg -K
 sec   rsa4096 2021-01-05 [C] [expires: 2022-01-05]
       C153F8B2CC34081E9091C71B195E33D069143FE5
 uid           [ultimate] Your Name (work) <your.name@company.email>
-uid           [ultimate] Your Name <you.other@email.address>
 ssb   rsa4096 2021-01-16 [A] [expires: 2022-01-16]
 ssb   rsa4096 2021-01-16 [S] [expires: 2022-01-16]
 ssb   rsa4096 2021-01-16 [E] [expires: 2022-01-16]
@@ -287,13 +286,12 @@ The next step is easy. Just initiate the routine with `adduid` and fill in your 
 ```
 gpg> adduid
 Real name: Your Name
-Email address: you.other@email.address
+Email address: your.other@email.address
 Comment: 
 You selected this USER-ID:
-    "Your Name <you.other@email.address>"
+    "Your Name <your.other@email.address>"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
-
 ```
 
 Until now your real name should not have changed, but maybe you have several email accounts. The listing shows that your second email has been added, but its trust status is `[unknown]`. As it is your own email address, chances are good that you trust yourself to have entered the right credentials. Don't worry this will change to ultimate once you save your changes.
@@ -303,7 +301,7 @@ sec  rsa4096/195E33D069143FE5
      created: 2021-01-05  expires: 2022-01-05  usage: C   
      trust: ultimate      validity: ultimate
 [ultimate] (1)  Your Name (work) <your.name@company.email>
-[ unknown] (2). Your Name <you.other@email.address>
+[ unknown] (2). Your Name <your.other@email.address>
 ```
 
 Repeat this for all your emails you want to be assosiated with this key.
@@ -317,13 +315,9 @@ Select the email you want to be your primary email with the number in the braces
 
 ```
 gpg> uid 1
-
 ...
-
 [ultimate] (1)* Your Name (work) <your.name@company.email>
-209
-[ unknown] (2). Your Name <you.other@email.address>
-
+[ unknown] (2). Your Name <your.other@email.address>
 ```
 
 The `*` (asterisk) marks the selection. Now I can type `primary` to perform the change. After that I deselect is again.
@@ -332,14 +326,12 @@ The `*` (asterisk) marks the selection. Now I can type `primary` to perform the 
 gpg> primary
 ...
 [ultimate] (1)* Your Name (work) <your.name@company.email>
-209
-[ unknown] (2) Your Name <you.other@email.address>
+[ unknown] (2) Your Name <your.other@email.address>
 ...
 gpg> uid 1
 ...
 [ultimate] (1). Your Name (work) <your.name@company.email>
-209
-[ unknown] (2) Your Name <you.other@email.address>
+[ unknown] (2) Your Name <your.other@email.address>
 ```
 
 Done, the `.` (dot) is now at position one. Lets `save` our progress and list our key.
