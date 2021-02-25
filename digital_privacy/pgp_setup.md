@@ -1,8 +1,8 @@
 ---
-title: PGP Setup
+title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-15T19:56:06.522Z
+date: 2021-02-25T18:56:24.697Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
