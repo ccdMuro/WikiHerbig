@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T20:08:44.602Z
+date: 2021-02-25T20:37:23.482Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -147,7 +147,6 @@ What keysize do you want? (3072) 4096
 ```
 
 Even though you can revoke a key manually, I consider it *good practice* to let the key expire in less than two years. Don't worry, you can extend its life time even after the key has expired.  But consider you loose access to your main key or just stop using the key at all and forget about it. 
-{.is-info}
 
 Let the key expire after one year: `1y` :arrow_right: `Return` :arrow_right: `Y` :arrow_right: `Return`
 
@@ -160,6 +159,10 @@ Is this correct? (y/N) y
 ```
 
 We are almost there. Now type in your identity, giving your full name and the email address you want to be associated with. A comment is optional and can be left empty. 
+
+- `<Full Name>` :arrow_right: `Return`
+- `<Email Address>` :arrow_right: `Return`
+- `<Comment>` :arrow_right: `Return`
 
 > You can add further email addresses to your key later.
 {.is-info}
@@ -175,14 +178,12 @@ You selected this USER-ID:
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
 ```
+ 
+Finally choose a passphrase to protect your key. Make sure you have enough entropy during the key generation and stick with common password best practices.
 
-Finally choose a passphrase to protect your key. It should be fairly long as you are not using it on a daily basis. Just stick with common password best practices, write it down and hide it in your secret vault later. You will need this passphrase in the following steps.
+Check your available entropy in an other terminal with `cat /proc/sys/kernel/random/entropy_avail`. On an average system it should be greater than `3000`. You can rise the entropy by using your system, moving the mouse and perform a faceroll over the keyboard during the key generation process. 
 
-Just make sure you have enough entropy during the key generation. Check your available entropy in an other terminal with `cat /proc/sys/kernel/random/entropy_avail`. On an average system it should be greater than `3000`. You can rise the entropy by using your system, moving the mouse and perform a faceroll over the keyboard during the key generation process. 
-
-Once the key generation is done you will see the listing of your key including its fingerprint. In this example `C153F8B2CC34081E9091C71B195E33D069143FE5`, you will need this in the following steps.
-
-Also you get a hint where the revocation certificate has been stored. Move it to a save place, like an encrypted USB drive that is kept offline. Anyone can use this revocation certificate to invalidate your key. So don't let it slip into fiendish hands. 
+- `<Passphrase>` :arrow_right: `Return`
 
 ```
 gpg: key 195E33D069143FE5 marked as ultimately trusted
@@ -194,6 +195,10 @@ pub   rsa4096 2021-01-05 [C] [expires: 2022-01-05]
 uid                      Your Name (work) <your.name@company.email>
 ```
 
+Once the key generation is done you will see the listing of your key including its fingerprint. 
+In this example: `C153F8B2CC34081E9091C71B195E33D069143FE5`.
+
+Also you get a hint where the revocation certificate has been stored. Move it to a save place, like an encrypted USB drive that is kept offline. Anyone can use this revocation certificate to invalidate your key. So don't let it slip into fiendish hands. 
 
 ## Sub Keys
 
