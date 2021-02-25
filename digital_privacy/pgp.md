@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T19:24:55.190Z
+date: 2021-02-25T20:08:44.602Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -37,7 +37,7 @@ A second passphrase secures my backup. I desiced to use two backup solutions sim
 
 frame "PGP Key" as pgpkey {
 	frame Main {
-  	file Cert
+  	file Certify
   }
   
   frame Sub as pgpsubkeys {
@@ -82,13 +82,15 @@ pgpkey ----> pgpkey_on_server
 
 ## Main Key
 
-Start the key generation process with `gpg --full-generate-key`. We are going for a custom way of organizing keys which differs from the default options. Go for the expert mode by adding the `--expert` parameter.
+Start the key generation process with `gpg --full-generate-key`. Go for the expert mode by adding the `--expert` parameter. This will enable custom key creation.
 
 ```
 $ gpg --full-generate-key --expert
 ```
 
-You should be prompted with the key type selection. Choose `RSA` with custom capabilities.
+You should be prompted with the key type selection. Choose `RSA` with custom capabilities. 
+
+Type: `8` :arrow_right: `Return`.
 
 ```
 Please select what kind of key you want
@@ -98,9 +100,15 @@ Please select what kind of key you want
 Your selection? 8
 ```
 
-The next part is a bit tricky. Now you can **toggle** the capabilities for the *main* key. Technically you could create *one key to do them all*. But I consider this a bad idea. Let's go for single-purpose-keys.
+Now you can **toggle** the capabilities for the *Main-Key*. 
 
-The only capability you can not toggle at this stage is `Certify`. Disable all other by **toggling** one at a time. Confirm each *toggle* in between. You should be typing a key combination like: `S`, `Return`, `E`, `Return`. Check the `Current allowed actions` to only contain `Certify` before finishing this stage with  `Q` and `Return`.
+The only capability you can not toggle at this stage is `Certify`. Disable all other by **toggling** one at a time. Confirm each *toggle* in between. Check that `Current allowed actions` only contains `Certify` before finishing this stage.
+
+ Type: `S` :arrow_right: `Return` :arrow_right: `E` :arrow_right: `Return` :arrow_right: `Q` :arrow_right: `Return`
+
+> Technically you could create one key with all capabilities. But I consider this a bad idea. Let's go for single-purpose-keys.
+{.is-info}
+
 
 ```
 Possible actions for a RSA key: Sign Certify Encrypt Authenticate
@@ -126,28 +134,35 @@ Current allowed actions: Certify
 Your selection? q
 ```
 
-In the next stage you can choose the length of your key. Rule of thumb: *longer is better*. If you also have a `YubiKey 5` go for the max length of `4096` bits. If you have a different model, I recommend you to consult the data sheet for supported key length.
+In the next stage you can choose the length of your key. Rule of thumb: *Longer is Better*
+
+Let's choose the length of `4096` :arrow_right: `Return`.
+
+> If you consider to store the *PGP Key* on a hardware authentication device like the *YubiKey*, consult the data sheet for supported key length.
+{.is-warning}
 
 ```
 RSA keys may be between 1024 and 4096 bits long.
 What keysize do you want? (3072) 4096
 ```
 
-Even though you can revoke a key manually, it is considered *good practice* to let your key expire in less than two years. Don't worry, you can extend its life time even after the key has expired.  But consider you loose access to your main key or just stop using the key at all and forget about it. Let the key expire after `1y` (one year).
+Even though you can revoke a key manually, I consider it *good practice* to let the key expire in less than two years. Don't worry, you can extend its life time even after the key has expired.  But consider you loose access to your main key or just stop using the key at all and forget about it. 
+{.is-info}
+
+Let the key expire after one year: `1y` :arrow_right: `Return` :arrow_right: `Y` :arrow_right: `Return`
 
 ```
 Please specify how long the key should be valid.
-         0 = key does not expire
-      <n>  = key expires in n days
-      <n>w = key expires in n weeks
-      <n>m = key expires in n months
-      <n>y = key expires in n years
+...
 Key is valid for? (0) 1y
 Key expires at Mi 05 Jan 2022 01:03:06 CET
 Is this correct? (y/N) y
 ```
 
-We are almost there. Now type in your identity, giving your real name and the email address you want to be associated with. A comment is optional and can be left empty. You can add further email addresses to your key later.
+We are almost there. Now type in your identity, giving your full name and the email address you want to be associated with. A comment is optional and can be left empty. 
+
+> You can add further email addresses to your key later.
+{.is-info}
 
 ```
 GnuPG needs to construct a user ID to identify your key.
