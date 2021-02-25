@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T20:37:23.482Z
+date: 2021-02-25T20:42:45.780Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -199,6 +199,7 @@ Once the key generation is done you will see the listing of your key including i
 In this example: `C153F8B2CC34081E9091C71B195E33D069143FE5`.
 
 Also you get a hint where the revocation certificate has been stored. Move it to a save place, like an encrypted USB drive that is kept offline. Anyone can use this revocation certificate to invalidate your key. So don't let it slip into fiendish hands. 
+
 
 ## Sub Keys
 
