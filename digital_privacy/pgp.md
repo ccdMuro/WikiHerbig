@@ -2,19 +2,20 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T18:56:24.697Z
+date: 2021-02-25T19:04:56.684Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
 ---
 
-# Overview
+# My Final Setup
 
-The goal is to store the keys onto the YubiKey for daily use.
+I store my keys onto the YubiKey for daily use but I keep backups in case my YubiKey gets damaged or lost, as this will result in data loss and the hassle of creating and distributing new keys to all devices and services.
 
-It is possible to create the keys directly on the YubiKey but then we won't be able to hold a backup. In case your YubiKey gets damaged or lost, this will result in potential data loss and the hassle of updating all your services and devices to use the new key.
+Here I'll show how I setup my keys, create backups and then move them to the YubiKey.
 
-I'll show you how to setup the keys on a PC, create backups and then move them to the YubiKey.
+> It is possible to create the keys directly on the YubiKey but then it is impossible to create a backup.
+{.is-info}
 
 ```plantuml
 @startuml
