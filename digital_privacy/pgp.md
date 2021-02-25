@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T20:42:45.780Z
+date: 2021-02-25T20:53:19.593Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -75,6 +75,7 @@ pgpkey ----> pgpkey_on_server
 
 @enduml
 ```
+
 
 
 # Create Keys
@@ -288,6 +289,7 @@ ssb   rsa4096 2021-01-16 [E] [expires: 2022-01-16]
 ```
 
 
+
 # Manage Identities
 
 
@@ -366,6 +368,7 @@ uid           [ultimate] Your Name <you.other@email.address>
 ```
 
 
+
 # Backup
 
 The backup will serve multiple purposes. 
@@ -425,6 +428,7 @@ Choose one or all of the following options to store your secret key.
 **CON:** Typing it by hand - RIP. Maybe OCR will help, on a volatile life system. Worst handling of all options. Would not recommend unless your tinfoil hat has a leakage and you need fabric to patch it.
 
 Sorry, there will be no "How to print to paper" article.
+
 
 
 # Yubikey
@@ -537,12 +541,13 @@ ssb>  rsa4096 2021-01-16 [S] [expires: 2022-01-16]
 ssb>  rsa4096 2021-01-16 [E] [expires: 2022-01-16]
 ```
 
-# My Environment
 
-Here is the list of hard- and software I used for my setup. 
+
+# My Environment
 
 
 ## Hardware
+
 - Desktop PC & Laptop
 - Android Phone
   - Fairphone 3
@@ -550,6 +555,7 @@ Here is the list of hard- and software I used for my setup.
 
 
 ## Software on Desktop
+
 - Ubuntu Linux 20.10
 - Tools/Software
   - gpg
@@ -561,12 +567,14 @@ Here is the list of hard- and software I used for my setup.
   
   
 ## Software on Mobile
+
 - Android
   - /e/ (e.foundation)
 - Apps
   - OpenKeychain
   - K-9 Mail
   - Password Store
+
 
 
 # Problems I encountered
