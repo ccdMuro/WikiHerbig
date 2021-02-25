@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T19:04:56.684Z
+date: 2021-02-25T19:20:18.386Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -17,18 +17,33 @@ Here I'll show how I setup my keys, create backups and then move them to the Yub
 > It is possible to create the keys directly on the YubiKey but then it is impossible to create a backup.
 {.is-info}
 
+My *PGP Key* is secured with a passphrase and consists of four parts.
+
+- **Main** Certificate 
+    - **Sub** Signing
+    - **Sub** Encryption
+    - **Sub** Authentication
+    
+The Yubikey holds only the *Sub-Keys* and is protected with a *PIN* which will lock the Yubikey if entered wrong three times in a row.
+
+A second passphrase secures my backup. I desiced to use two backup solutions simultaneously.
+
+- Encrypted USB Thumbdrive
+- Encrypted Archive in my private Cloud
+
+
 ```plantuml
 @startuml
 
 frame "PGP Key" as pgpkey {
-	frame main {
-  	file cert
+	frame Main {
+  	file Cert
   }
   
-  frame sub as pgpsubkeys {
-    file sign
-    file encrypt
-    file authenticate
+  frame Sub as pgpsubkeys {
+    file Sign
+    file Encrypt
+    file Authenticate
   }
 }
 
@@ -36,7 +51,7 @@ card YubiKey as yubikey {
    artifact "PGP Sub-Keys" as pgpsubkeys_on_yubikey
 }
 
-frame backup as backup {
+frame Backup as backup {
 card "Encrypted USB Storage" as usb {
   artifact "PGP Key" as pgpkey_on_usb
 }
@@ -60,13 +75,6 @@ pgpkey ----> pgpkey_on_server
 
 @enduml
 ```
-
-What we are looking for is a combination of 4 Keys.
-
-- **Main** Certificate 
-    - **Sub** Signing
-    - **Sub** Encryption
-    - **Sub** Authentication
 
 The user identification will be assosiated with the main key. Your `uid` contains the full name the assosiated email as well as an optional comment. A listing of a key as printed by gpg may look like this:
 
