@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T19:20:18.386Z
+date: 2021-02-25T19:24:55.190Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -74,18 +74,6 @@ pgpkey ----> pgpkey_on_usb
 pgpkey ----> pgpkey_on_server
 
 @enduml
-```
-
-The user identification will be assosiated with the main key. Your `uid` contains the full name the assosiated email as well as an optional comment. A listing of a key as printed by gpg may look like this:
-
-```
-pub   rsa4096/ABCDEF1234567890 2021-01-01 [C] [expires: 2022-01-01]
-      1234567890ABCDEF1234567890ABCDEF12345678
-uid           [ultimate] User Name <user.name@company.email>
-uid           [ultimate] User Name (Nickname) <nickname@other.email>
-sub   rsa4096/BCDEF1234567890A 2021-01-01 [S] [expires: 2022-01-01]
-sub   rsa4096/CDEF1234567890AB 2021-01-01 [E] [expires: 2022-01-01]
-sub   rsa4096/DEF1234567890ABC 2021-01-01 [A] [expires: 2022-01-01]
 ```
 
 
