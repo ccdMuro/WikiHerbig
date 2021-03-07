@@ -1,8 +1,8 @@
 ---
 title: C++ Tutorial
-description: 
+description: Where the journey of C++ programming begins.
 published: true
-date: 2021-03-07T10:55:09.387Z
+date: 2021-03-07T10:57:54.366Z
 tags: 
 editor: markdown
 dateCreated: 2021-03-07T10:55:09.387Z
