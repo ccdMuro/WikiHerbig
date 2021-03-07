@@ -2,7 +2,7 @@
 title: C++ Tutorial
 description: Where the journey of C++ programming begins.
 published: true
-date: 2021-03-07T10:57:54.366Z
+date: 2021-03-07T11:12:30.958Z
 tags: 
 editor: markdown
 dateCreated: 2021-03-07T10:55:09.387Z
@@ -25,9 +25,8 @@ But there is still something we can look at. We have a *function definition*. So
 
 - The name of the function or the *identifier* is `main`. 
 - In fornt of the function name is the *return type* `int`.
-- After the function name comes the *parameter list* `()` (it is empty in this example).
-- The *function body* is enclosed by curly braces `{ }`.
-
+- After the function name comes the *parameter list* `()` (in this example it is empty).
+- The *function body* is enclosed by curly braces `{ }` (in this example it is empty too).
 
 > The space enclosed by curly braces `{  }` is called **scope**.
 {.is-info}
