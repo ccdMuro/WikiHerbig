@@ -2,7 +2,7 @@
 title: C++ Tutorial
 description: Where the journey of C++ programming begins.
 published: true
-date: 2021-03-07T11:12:30.958Z
+date: 2021-03-07T11:13:26.822Z
 tags: 
 editor: markdown
 dateCreated: 2021-03-07T10:55:09.387Z
@@ -17,7 +17,7 @@ The least that one has to write so that the compiler recognizes the source code 
 int main () 
 {
 
-};
+}
 ```
 When compiled, you get an executable file that does nothing.
 
