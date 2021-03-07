@@ -2,7 +2,7 @@
 title: C++ Tutorial
 description: Where the journey of C++ programming begins.
 published: true
-date: 2021-03-07T11:13:57.380Z
+date: 2021-03-07T11:20:43.608Z
 tags: 
 editor: markdown
 dateCreated: 2021-03-07T10:55:09.387Z
@@ -10,7 +10,7 @@ dateCreated: 2021-03-07T10:55:09.387Z
 
 ## Entry Point
 
-A C++ Programm begins with the `main()` funktion. This is the programms entry point, where it all beginns.
+A C++ programm begins with the `main()` funktion. This is the programms entry point, where it all beginns.
 
 The least that one has to write so that the compiler recognizes the source code as valid C++:
 ```c++
