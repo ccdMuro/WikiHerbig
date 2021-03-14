@@ -2,7 +2,7 @@
 title: Wiki Home
 description: Root of the Herbig knowledge base.
 published: true
-date: 2021-03-07T10:48:42.329Z
+date: 2021-03-14T09:33:49.531Z
 tags: 
 editor: markdown
 dateCreated: 2021-01-03T14:45:52.960Z
@@ -16,4 +16,4 @@ These notes help me to keep an overview of the things I have in use and to be ab
 
 - [Digital Privacy *Approaches on how to protect your digital identity.*](/digital_privacy)
 - [Coding *Programing languages and build systems.*](/coding)
-{.links-list}
+{.links-lis}
