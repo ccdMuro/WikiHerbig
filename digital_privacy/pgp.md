@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-02-25T20:53:19.593Z
+date: 2021-03-16T16:51:10.143Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -214,8 +214,9 @@ Adding another key is as simple as `addkey`. The following procedurese should lo
 
 ```
 gpg> addkey
-
+...
 (8) RSA (set your own capabilities)
+...
 Your selection? 8
 ```
 
@@ -231,10 +232,19 @@ Current allowed actions: Sign Encrypt
    (Q) Finished
    
 Your selection? e
+
+...
+
 Your selection? s
+
+...
+
 Your selection? a
 
+...
+
 Current allowed actions: Authenticate
+...
 Your selection? q
 ```
 
