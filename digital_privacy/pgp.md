@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-03-16T16:51:10.143Z
+date: 2021-03-16T20:21:54.307Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -235,10 +235,14 @@ Your selection? e
 
 ...
 
+Current allowed actions: Sign 
+...
 Your selection? s
 
 ...
 
+Current allowed actions: 
+...
 Your selection? a
 
 ...
@@ -256,9 +260,15 @@ What keysize do you want? (3072) 4096
 
 Set a reasonable expiration date.
 ```
+Please specify how long the key should be valid.
+...
 Key is valid for? (0) 1y
 Key expires at Mo 17 Jan 2022 00:02:47 CET
 Is this correct? (y/N) y
+```
+
+Finally confirm the creation.
+```
 Really create? (y/N) y
 ```
 
