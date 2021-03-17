@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-03-16T20:21:54.307Z
+date: 2021-03-17T19:01:51.159Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -91,7 +91,8 @@ $ gpg --full-generate-key --expert
 
 You should be prompted with the key type selection. Choose `RSA` with custom capabilities. 
 
-Type: `8` :arrow_right: `Return`.
+**Type:** 
+`8` :arrow_right: `Return`.
 
 ```
 Please select what kind of key you want
@@ -105,7 +106,10 @@ Now you can **toggle** the capabilities for the *Main-Key*.
 
 The only capability you can not toggle at this stage is `Certify`. Disable all other by **toggling** one at a time. Confirm each *toggle* in between. Check that `Current allowed actions` only contains `Certify` before finishing this stage.
 
- Type: `S` :arrow_right: `Return` :arrow_right: `E` :arrow_right: `Return` :arrow_right: `Q` :arrow_right: `Return`
+**Type:** 
+`S` :arrow_right: `Return` :arrow_right: 
+`E` :arrow_right: `Return` :arrow_right: 
+`Q` :arrow_right: `Return`
 
 > Technically you could create one key with all capabilities. But I consider this a bad idea. Let's go for single-purpose-keys.
 {.is-info}
@@ -137,7 +141,9 @@ Your selection? q
 
 In the next stage you can choose the length of your key. Rule of thumb: *Longer is Better*
 
-Let's choose the length of `4096` :arrow_right: `Return`.
+Let's choose the length of 4096.
+**Type:**
+`4096` :arrow_right: `Return`.
 
 > If you consider to store the *PGP Key* on a hardware authentication device like the *YubiKey*, consult the data sheet for supported key length.
 {.is-warning}
@@ -149,7 +155,10 @@ What keysize do you want? (3072) 4096
 
 Even though you can revoke a key manually, I consider it *good practice* to let the key expire in less than two years. Don't worry, you can extend its life time even after the key has expired.  But consider you loose access to your main key or just stop using the key at all and forget about it. 
 
-Let the key expire after one year: `1y` :arrow_right: `Return` :arrow_right: `Y` :arrow_right: `Return`
+Let the key expire after one year. 
+**Type:**
+`1y` :arrow_right: `Return` :arrow_right: 
+`Y` :arrow_right: `Return`
 
 ```
 Please specify how long the key should be valid.
@@ -160,10 +169,10 @@ Is this correct? (y/N) y
 ```
 
 We are almost there. Now type in your identity, giving your full name and the email address you want to be associated with. A comment is optional and can be left empty. 
-
-- `<Full Name>` :arrow_right: `Return`
-- `<Email Address>` :arrow_right: `Return`
-- `<Comment>` :arrow_right: `Return`
+**Type:**
+`<Full Name>` :arrow_right: `Return` :arrow_right:
+`<Email Address>` :arrow_right: `Return` :arrow_right:
+`<Comment>` :arrow_right: `Return`
 
 > You can add further email addresses to your key later.
 {.is-info}
@@ -184,7 +193,8 @@ Finally choose a passphrase to protect your key. Make sure you have enough entro
 
 Check your available entropy in an other terminal with `cat /proc/sys/kernel/random/entropy_avail`. On an average system it should be greater than `3000`. You can rise the entropy by using your system, moving the mouse and perform a faceroll over the keyboard during the key generation process. 
 
-- `<Passphrase>` :arrow_right: `Return`
+**Type:**
+`<Passphrase>` :arrow_right: `Return`
 
 ```
 gpg: key 195E33D069143FE5 marked as ultimately trusted
@@ -212,6 +222,12 @@ $ gpg --edit-key --expert C153F8B2CC34081E9091C71B195E33D069143FE5
 
 Adding another key is as simple as `addkey`. The following procedurese should look familiar to you as it's the same as for the primary key. Go for the `RSA` key with custom capabilities.
 
+
+### Authenticate
+
+**Type:**
+`8` :arrow_right: `Return`
+
 ```
 gpg> addkey
 ...
@@ -222,6 +238,12 @@ Your selection? 8
 
 **Toggle** the capabilities so you create a diffrent key every time. In this example I start with `Authenticate`.
 
+**Type:**
+ `S` :arrow_right: `Return` :arrow_right: 
+ `E` :arrow_right: `Return` :arrow_right: 
+ `A` :arrow_right: `Return` :arrow_right: 
+ `Q` :arrow_right: `Return`
+
 ```
 Possible actions for a RSA key: Sign Encrypt Authenticate 
 Current allowed actions: Sign Encrypt 
@@ -231,13 +253,13 @@ Current allowed actions: Sign Encrypt
    (A) Toggle the authenticate capability
    (Q) Finished
    
-Your selection? e
-
-...
-
-Current allowed actions: Sign 
-...
 Your selection? s
+
+...
+
+Current allowed actions: Encrypt 
+...
+Your selection? e
 
 ...
 
@@ -253,12 +275,17 @@ Your selection? q
 ```
 
 The key lengh should be as long as possible. Consider the supported key length of your security key if you intend to use one.
+**Type:**
+`4096` :arrow_right: `Return`
 ```
 RSA keys may be between 1024 and 4096 bits long.
 What keysize do you want? (3072) 4096
 ```
 
 Set a reasonable expiration date.
+**Type:**
+`1y`  :arrow_right: `Return` :arrow_right:
+`Y` :arrow_right: `Return`
 ```
 Please specify how long the key should be valid.
 ...
@@ -268,6 +295,8 @@ Is this correct? (y/N) y
 ```
 
 Finally confirm the creation.
+**Type:**
+`Y` :arrow_right: `Return`
 ```
 Really create? (y/N) y
 ```
@@ -281,11 +310,17 @@ ssb  rsa4096/8E15AB3040140A61
      created: 2021-01-16  expires: 2022-01-16  usage: A   
 ```
 
+
+### Sign
+
 Now repeat the `addkey` procedure but this time **toggle** the capabilitiy to `Sign`.
 
 ```
 Current allowed actions: Sign
 ```
+
+
+### Encrypt
 
 Now repeat the `addkey` procedure but this time **toggle** the capabilitiy to `Encrypt`.
 
@@ -293,7 +328,16 @@ Now repeat the `addkey` procedure but this time **toggle** the capabilitiy to `E
 Current allowed actions: Encrypt
 ```
 
-Finally don't forget to `save` your changes and check out your PGP key. You should end up with a `[C]ertify`, an `[A]uthenticate`, a `[S]ign` and an `[E]ncrypt` Key.
+
+### Finish
+
+> Finally don't forget to `save` your changes. 
+{.is-success}
+
+```
+gpg> save
+```
+Check out your PGP key. You should end up with a `[C]ertify`, an `[A]uthenticate`, a `[S]ign` and an `[E]ncrypt` Key.
 
 ```
 gpg> save
@@ -485,6 +529,10 @@ With the `key #` command you can **toggle/select** the key you want to move with
 
 Let's start with moving the `[A]uthentication` key. When prompted where to store the key, select the *Authentication key* slot (`3`).
 
+**Type:**
+`key 1` :arrow_right: `Return` :arrow_right:
+`keytocard` :arrow_right: `Return` :arrow_right:
+`3` :arrow_right: `Return`
 ```
 gpg> key 1
 ...
@@ -498,6 +546,12 @@ Your selection? 3
 ```
 
 Good, now switch to the `[S]ignature` key. Remember to **toggle** the selection for `key 1` to deselect it. When prompted where to store the key, select the *Signature key* slot (`1`).
+
+**Type:**
+`key 2`:arrow_right: `Return` :arrow_right:
+`key 1` :arrow_right: `Return` :arrow_right:
+`keytocard` :arrow_right: `Return` :arrow_right:
+`1` :arrow_right: `Return`
 
 ```
 gpg> key 2
@@ -515,10 +569,16 @@ ssb* rsa4096/620EE3F18E5C933B
 gpg> keytocard
 Please select where to store the key:
    (1) Signature key
-Your selection? 3
+Your selection? 1
 ```
 
 Repeat for the `[E]ncryption` Key. When prompted where to store the key, select the *Encryption key* slot (`2`).
+
+**Type:**
+`key 3`:arrow_right: `Return` :arrow_right:
+`key 2` :arrow_right: `Return` :arrow_right:
+`keytocard` :arrow_right: `Return` :arrow_right:
+`2` :arrow_right: `Return`
 
 ```
 gpg> key 3
@@ -539,7 +599,8 @@ Please select where to store the key:
 Your selection? 2
 ```
 
-Don't forget to save your changes.
+> Don't forget to save your changes.
+{.is-success}
 
 ```
 gpg> save
@@ -560,40 +621,6 @@ ssb>  rsa4096 2021-01-16 [A] [expires: 2022-01-16]
 ssb>  rsa4096 2021-01-16 [S] [expires: 2022-01-16]
 ssb>  rsa4096 2021-01-16 [E] [expires: 2022-01-16]
 ```
-
-
-
-# My Environment
-
-
-## Hardware
-
-- Desktop PC & Laptop
-- Android Phone
-  - Fairphone 3
-- YubiKey 5 
-
-
-## Software on Desktop
-
-- Ubuntu Linux 20.10
-- Tools/Software
-  - gpg
-  - pcscd
-  - tar
-  - thunderbird
-  - pass
-    - git
-  
-  
-## Software on Mobile
-
-- Android
-  - /e/ (e.foundation)
-- Apps
-  - OpenKeychain
-  - K-9 Mail
-  - Password Store
 
 
 
