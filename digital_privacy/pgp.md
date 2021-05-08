@@ -2,7 +2,7 @@
 title: PGP
 description: Generate keys, create a secure backup and use it with a YubiKey.
 published: true
-date: 2021-03-17T20:17:47.848Z
+date: 2021-05-08T06:07:02.696Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -493,6 +493,9 @@ Choose one or all of the following options to store your secret key.
 
 Sorry, there will be no "How to print to paper" article.
 
+
+## TODO: Restore
+> Comming soon: How to use the backup data to restore the gpg key.
 
 
 # Yubikey
