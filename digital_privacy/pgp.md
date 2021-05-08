@@ -1,8 +1,8 @@
 ---
 title: PGP
-description: Generate keys, create a secure backup and use it with a YubiKey.
+description: Generate, manage and backup a key with gpg.
 published: true
-date: 2021-05-08T14:11:36.371Z
+date: 2021-05-08T14:14:01.018Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
