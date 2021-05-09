@@ -2,7 +2,7 @@
 title: YubiKey 5 NFC
 description: Add personal credentials ans set a pin.
 published: true
-date: 2021-05-09T20:32:00.574Z
+date: 2021-05-09T20:34:16.189Z
 tags: nfc, yubikey
 editor: markdown
 dateCreated: 2021-05-08T05:56:40.042Z
@@ -44,7 +44,8 @@ key-attr
 
 ## Generate keys
 
-Instructions how to create keys can be found here: [PGP](/digital_privacy/pgp)
+Instructions how to create keys can be found here: [PGP](/digital_privacy/pgp#create-keys)
+
 
 ## Move keys to card
 
