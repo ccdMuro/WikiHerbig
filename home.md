@@ -2,7 +2,7 @@
 title: Wiki Home
 description: Root of the Herbig knowledge base.
 published: true
-date: 2021-05-09T20:52:03.917Z
+date: 2021-05-09T21:04:02.697Z
 tags: 
 editor: markdown
 dateCreated: 2021-01-03T14:45:52.960Z
@@ -10,6 +10,6 @@ dateCreated: 2021-01-03T14:45:52.960Z
 
 # Preface
 
-This wiki page helps me keep trak of all the things I have in use and to restore or reproduce them in the event of a failure.
+This wiki serves as an archive for all the valuable knowledge I would like to preserve so I'm able to revisit and restore it in the times of need.
 
-Content can be accessed via the menu on the left or by searching for a topic or tag in the header.
+The content is accessed via the menu on the left or by searching for a topic or tag in the header.
