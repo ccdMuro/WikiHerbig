@@ -2,7 +2,7 @@
 title: YubiKey 5 NFC
 description: Add personal credentials ans set a pin.
 published: true
-date: 2021-05-09T20:34:16.189Z
+date: 2021-05-09T20:38:13.606Z
 tags: nfc, yubikey
 editor: markdown
 dateCreated: 2021-05-08T05:56:40.042Z
@@ -169,6 +169,11 @@ ssb>  rsa4096 2021-01-16 [S] [expires: 2022-01-16]
 ssb>  rsa4096 2021-01-16 [E] [expires: 2022-01-16]
 ```
 
+
+## Unblock PIN
+
+
+## Factory reset
 
 # Problems I encountered
 
