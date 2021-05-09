@@ -2,7 +2,7 @@
 title: YubiKey 5 NFC
 description: Add personal credentials ans set a pin.
 published: true
-date: 2021-05-09T20:38:13.606Z
+date: 2021-05-09T20:41:25.757Z
 tags: nfc, yubikey
 editor: markdown
 dateCreated: 2021-05-08T05:56:40.042Z
@@ -15,39 +15,39 @@ In this guide I will be referring to the **YubiKey 5 NFC** as card. Also you wil
 Make sure the card has been recognised correctly with `gpg --card-status`. You should see some basic card informations. If not, check on `pcscd` with `systemctl status pcscd`.
 
 
-## Initialise Card
+# Initialise Card
 ```
 gpg --card-edit
 admin
 ```
 
-### Key size
+## Key size
 ```
 key-attr
 (RSA) 1
 4096
 ```
 
-### PIN and Password
+## PIN and Password
 
 
-## Personalise
+# Personalise
 
-### name
+## name
 
-### Language
+## Language
 
-### Public Key URL
+## Public Key URL
 
-### Login Data
+## Login Data
 
 
-## Generate keys
+# Generate keys
 
 Instructions how to create keys can be found here: [PGP](/digital_privacy/pgp#create-keys)
 
 
-## Move keys to card
+# Move keys to card
 
 
 With the card stuck and recognised, let's edit the key you want to move to the card.
@@ -170,10 +170,10 @@ ssb>  rsa4096 2021-01-16 [E] [expires: 2022-01-16]
 ```
 
 
-## Unblock PIN
+# Unblock PIN
 
 
-## Factory reset
+# Factory reset
 
 # Problems I encountered
 
