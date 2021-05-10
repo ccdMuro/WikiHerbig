@@ -2,7 +2,7 @@
 title: PGP
 description: Generate, manage and backup a key with gpg.
 published: true
-date: 2021-05-08T14:14:01.018Z
+date: 2021-05-10T21:21:39.254Z
 tags: gpg, pgp, yubikey
 editor: markdown
 dateCreated: 2021-01-03T17:35:46.129Z
@@ -366,11 +366,11 @@ uid           [ultimate] Your Name <you.other@email.address>
 
 The backup will serve multiple purposes. 
 
-To create a replacement if your yubikey gets broken. This is why we create the key on the PC before moving it to the yubikey. It is possible to create the key directly on the yubikey itself, but it is not possible to get hold of a private key once it hits the "write only memory" of the yubikey. In case of a hardware failure you loose all access for good. But with the private key backup you can just buy a new yubikey and restore it.
+- To create a replacement if your yubikey gets broken. This is why we create the key on the PC before moving it to the yubikey. It is possible to create the key directly on the yubikey itself, but it is not possible to get hold of a private key once it hits the "write only memory" of the yubikey. In case of a hardware failure you loose all access for good. But with the private key backup you can just buy a new yubikey and restore it.
 
-Even if you do not intend to use a yubikey. If any other instance of the key gets lost, RIP data.
+- Even if you do not intend to use a yubikey. If you loose access to the last existing instance of the key, RIP data.
 
-Finally, to extend the expiration date of your keys. During your everyday life you will have only the authentication, signing and encryption keys at hand. The certification key will remain in a save place aka your backup.
+- Finally, to extend the expiration date of your keys. During your everyday life you will have only the authentication, signing and encryption keys at hand. The certification key will remain in a save place aka your backup.
 
 
 ## Export Secret Key
@@ -422,6 +422,15 @@ Choose one or all of the following options to store your secret key.
 
 Sorry, there will be no "How to print to paper" article.
 
+## TODO: Remove
+> Incomming: Remove Secret Key (Certificate)
 
 ## TODO: Restore
 > Comming soon: How to use the backup data to restore the gpg key.
+```
+$ gpg --import yourname.gpg.subsec
+$ gpg --edit-key trust 5 y quit
+```
+
+# TODO: Revoke 
+> Incomming: Revoke corrupted key
